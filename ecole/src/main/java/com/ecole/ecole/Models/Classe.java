@@ -1,5 +1,6 @@
 package com.ecole.ecole.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,7 +14,10 @@ public class Classe implements Serializable {
     private Long id;
     @Column(name = "classeLib")
     private String lib;
-    //relationship
+    @ManyToOne(targetEntity = Niveau.class)
+    @JoinColumn(name = "id_niveau")
+    private Niveau niveau;
+
 
 
     public Classe() {

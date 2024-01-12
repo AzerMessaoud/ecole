@@ -1,8 +1,11 @@
 package com.ecole.ecole.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "étudiant")
 public class Etudiant implements Serializable {
@@ -14,6 +17,15 @@ public class Etudiant implements Serializable {
     private String nom;
     @Column(name = "prenom")
     private String preNom;
+    @ManyToOne(targetEntity = Classe.class)
+    @JoinColumn(name = "id_Classe")
+
+    private Classe classe;
+    @ManyToMany
+    @JoinTable(name = "étudiant_club",
+            joinColumns = @JoinColumn(name = "id_etudiant"),
+            inverseJoinColumns = @JoinColumn(name = "id_club"))
+    private List<Club> clubsAffecter;
 
 
     public Etudiant() {
