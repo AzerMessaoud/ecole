@@ -17,24 +17,37 @@ public class Etudiant implements Serializable {
     private String nom;
     @Column(name = "prenom")
     private String preNom;
+
+
+
+
     @ManyToOne(targetEntity = Classe.class)
-    @JoinColumn(name = "id_Classe")
+    @JoinColumn(name = "id_classe")
 
     private Classe classe;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "étudiant_club",
             joinColumns = @JoinColumn(name = "id_etudiant"),
             inverseJoinColumns = @JoinColumn(name = "id_club"))
     private List<Club> clubsAffecter;
 
+    public List<Club> getClubsAffecter() {
+        return clubsAffecter;
+    }
 
     public Etudiant() {
+    }
+    public Etudiant(Classe classe) {
+        this.classe = classe;
     }
 
     public Etudiant(Long id, String nom, String preNom) {
         this.id = id;
         this.nom = nom;
         this.preNom = preNom;
+    }
+    public Classe getClasse() {
+        return classe;
     }
 
     public Long getId() {

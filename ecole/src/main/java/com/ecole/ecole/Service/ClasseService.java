@@ -14,7 +14,7 @@ public class ClasseService {
     ClassRepo classRepo;
 
     public ClasseService() {}
-    public List<Classe> getAllClass(){return classRepo.findAll();}
+    public List<Classe> getAllClasses(){return classRepo.findAll();}
     public Classe addClass(Classe classe){
         return classRepo.save(classe);
     }

@@ -1,5 +1,6 @@
 package com.ecole.ecole.access;
 import com.ecole.ecole.Models.Etudiant;
+import com.ecole.ecole.Models.EtudiantDTO;
 import com.ecole.ecole.Service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/Etudiant")
+@RequestMapping("/etudiant")
 public class EtudiantController {
     @Autowired
     EtudiantService etudiantService;
 
     @GetMapping
-    public ResponseEntity<List<Etudiant>> getAllEtudiants() {
-        List<Etudiant> etudiants = etudiantService.getAllEtudiant();
+    public ResponseEntity<List<EtudiantDTO>> getAllEtudiants() {
+        List<EtudiantDTO> etudiants = etudiantService.getAllEtudiant();
         return new ResponseEntity<>(etudiants, HttpStatus.OK);
     }
     @PostMapping("/add")
@@ -33,4 +34,13 @@ public class EtudiantController {
         etudiantService.deleteEtudiant(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PostMapping("/{idEtudiant}/Club/{idClub}")
+    public ResponseEntity<String> affectingEtudiantToClub(
+            @PathVariable("idEtudiant") Long idEtudiant,
+            @PathVariable("idClub") Long idClub
+    ) {
+            etudiantService.affectationEtudiantClub(idEtudiant, idClub);
+            return new ResponseEntity<>("Enrollment successful", HttpStatus.OK);
+    }
+
 }

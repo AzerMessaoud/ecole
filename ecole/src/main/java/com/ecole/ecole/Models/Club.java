@@ -10,9 +10,9 @@ public class Club implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idclub",nullable = false,updatable = false)
     private Long id;
-    @Column(name = "clubLib")
+    @Column(name = "clublib")
     private String clubLib;
-    //relationship
+
 
 
     public Club() {

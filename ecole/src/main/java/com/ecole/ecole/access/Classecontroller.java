@@ -18,7 +18,7 @@ public class Classecontroller {
 
     @GetMapping
     public ResponseEntity<List<Classe>> getAllClasses() {
-        List<Classe> classes = classeService.getAllClass();
+        List<Classe> classes = classeService.getAllClasses();
         return new ResponseEntity<>(classes, HttpStatus.OK);
     }
     @PostMapping("/add")

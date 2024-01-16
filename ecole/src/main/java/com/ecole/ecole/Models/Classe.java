@@ -12,7 +12,7 @@ public class Classe implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idclasse",nullable = false,updatable = false)
     private Long id;
-    @Column(name = "classeLib")
+    @Column
     private String lib;
     @ManyToOne(targetEntity = Niveau.class)
     @JoinColumn(name = "id_niveau")
