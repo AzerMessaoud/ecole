@@ -17,13 +17,8 @@ public class Etudiant implements Serializable {
     private String nom;
     @Column(name = "prenom")
     private String preNom;
-
-
-
-
     @ManyToOne(targetEntity = Classe.class)
     @JoinColumn(name = "id_classe")
-
     private Classe classe;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "étudiant_club",

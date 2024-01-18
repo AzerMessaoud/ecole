@@ -1,16 +1,15 @@
 package com.ecole.ecole.Service;
 
-import com.ecole.ecole.Models.Club;
 import com.ecole.ecole.Models.Etudiant;
-import com.ecole.ecole.Models.Niveau;
+import com.ecole.ecole.DTOs.EtudiantDTO;
 import com.ecole.ecole.dao.ClubRepo;
 import com.ecole.ecole.dao.EtudiantRepo;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EtudiantService {
@@ -18,9 +17,18 @@ public class EtudiantService {
     EtudiantRepo etudiantRepo;
     @Autowired
     ClubRepo clubRepo;
+    @Autowired
+    Mapper modelMapper;
+
 
     public EtudiantService() {}
-    public List<Etudiant> getAllEtudiant(){ return etudiantRepo.findAll();
+    public List<EtudiantDTO> getAllEtudiant(){
+        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findAll().stream()
+            .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+            .collect(Collectors.toList());
+        return etudiantDTOList;
+
+
 
     }
     public Etudiant addEtudiant(Etudiant etudiant){

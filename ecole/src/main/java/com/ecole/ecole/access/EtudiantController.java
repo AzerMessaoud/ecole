@@ -1,6 +1,6 @@
 package com.ecole.ecole.access;
 import com.ecole.ecole.Models.Etudiant;
-import com.ecole.ecole.Models.EtudiantDTO;
+import com.ecole.ecole.DTOs.EtudiantDTO;
 import com.ecole.ecole.Service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

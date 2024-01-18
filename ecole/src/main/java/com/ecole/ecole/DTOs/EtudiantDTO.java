@@ -1,4 +1,4 @@
-package com.ecole.ecole.Models;
+package com.ecole.ecole.DTOs;
 
 import java.io.Serializable;
 
