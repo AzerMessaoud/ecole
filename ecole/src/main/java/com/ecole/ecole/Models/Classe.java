@@ -43,4 +43,12 @@ public class Classe implements Serializable {
     public void setLib(String lib) {
         this.lib = lib;
     }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
 }

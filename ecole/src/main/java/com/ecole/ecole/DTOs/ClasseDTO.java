@@ -7,6 +7,9 @@ public class ClasseDTO implements Serializable {
     private String lib;
     private Long idNivaeu;
 
+    public ClasseDTO() {
+    }
+
     public Long getId() {
         return id;
     }

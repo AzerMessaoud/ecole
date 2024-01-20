@@ -27,9 +27,6 @@ public class EtudiantService {
             .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
             .collect(Collectors.toList());
         return etudiantDTOList;
-
-
-
     }
     public Etudiant addEtudiant(Etudiant etudiant){
         return etudiantRepo.save(etudiant);
@@ -48,5 +45,11 @@ public class EtudiantService {
         etudiantRepo.save(etudiant);
 
          */
+    }
+    public List<EtudiantDTO> getAllByNiveau(String NiveauLib){
+        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByNiveau(NiveauLib).stream()
+                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+                .collect(Collectors.toList());
+        return etudiantDTOList;
     }
 }

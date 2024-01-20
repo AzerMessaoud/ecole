@@ -24,23 +24,29 @@ public class EtudiantController {
         Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);
         return new ResponseEntity<>(newEtudiant, HttpStatus.CREATED);
     }
-    @PostMapping("/Update")
+    @PostMapping("/update")
     public ResponseEntity<Etudiant> updateClasses(@RequestBody Etudiant etudiant){
         Etudiant UpdatedEtudiant= etudiantService.updateEtudiant(etudiant);
         return new ResponseEntity<>(UpdatedEtudiant, HttpStatus.OK);
     }
-    @DeleteMapping("/Delete{id}")
+    @DeleteMapping("/delete{id}")
     public ResponseEntity<?>deleteEtudiant(@PathVariable("id") Long id) {
         etudiantService.deleteEtudiant(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PostMapping("/{idEtudiant}/Club/{idClub}")
+    @PostMapping("/{idEtudiant}/club/{idClub}")
     public ResponseEntity<String> affectingEtudiantToClub(
             @PathVariable("idEtudiant") Long idEtudiant,
             @PathVariable("idClub") Long idClub
     ) {
             etudiantService.affectationEtudiantClub(idEtudiant, idClub);
             return new ResponseEntity<>("Enrollment successful", HttpStatus.OK);
+    }
+
+    @GetMapping("/grade/{niveauLib}")
+    public ResponseEntity<List<EtudiantDTO>> getAllFirstGradeEtudiants(@PathVariable ("niveauLib")String niveauLib) {
+        List<EtudiantDTO> etudiants = etudiantService.getAllByNiveau(niveauLib);
+        return new ResponseEntity<>(etudiants, HttpStatus.OK);
     }
 
 }

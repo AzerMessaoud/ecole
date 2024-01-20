@@ -1,5 +1,6 @@
 package com.ecole.ecole.access;
 
+import com.ecole.ecole.DTOs.ClasseDTO;
 import com.ecole.ecole.Models.Classe;
 import com.ecole.ecole.Models.Club;
 import com.ecole.ecole.Service.ClasseService;
@@ -17,8 +18,8 @@ public class Classecontroller {
     ClasseService classeService;
 
     @GetMapping
-    public ResponseEntity<List<Classe>> getAllClasses() {
-        List<Classe> classes = classeService.getAllClasses();
+    public ResponseEntity<List<ClasseDTO>> getAllClasses() {
+        List<ClasseDTO> classes = classeService.getAllClass();
         return new ResponseEntity<>(classes, HttpStatus.OK);
     }
     @PostMapping("/add")

@@ -13,6 +13,8 @@ public class EtudiantDTO implements Serializable {
 
     private Long idClasse;
 
+    public EtudiantDTO() {
+    }
 
     public Long getId() {
         return id;

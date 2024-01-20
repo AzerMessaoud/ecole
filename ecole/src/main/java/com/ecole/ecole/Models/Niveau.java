@@ -10,9 +10,8 @@ public class Niveau implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idniveau",nullable = false,updatable = false)
     private Long id;
-    @Column()
+    @Column(name="niveau_lib")
     private String niveauLib;
-    //relationship
 
 
     public Niveau() {
