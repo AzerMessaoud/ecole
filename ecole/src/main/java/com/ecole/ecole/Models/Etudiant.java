@@ -7,11 +7,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "étudiant")
+@Table(name = "etudiant")
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idétudiant",nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false)
     private Long id;
     @Column()
     private String nom;

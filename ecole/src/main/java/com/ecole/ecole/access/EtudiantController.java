@@ -19,6 +19,15 @@ public class EtudiantController {
         List<EtudiantDTO> etudiants = etudiantService.getAllEtudiant();
         return new ResponseEntity<>(etudiants, HttpStatus.OK);
     }
+    @GetMapping("/derived-query")
+    public ResponseEntity<List<EtudiantDTO>> getAllEtudiantsDQ() {
+        List<EtudiantDTO> etudiants = etudiantService.getStudentsWithoutClassesDQ();
+        return new ResponseEntity<>(etudiants, HttpStatus.OK);
+    }@GetMapping("/jpql")
+    public ResponseEntity<List<EtudiantDTO>> getStudentsWithoutClasses() {
+        List<EtudiantDTO> etudiants = etudiantService.getStudentsWithoutClasses();
+        return new ResponseEntity<>(etudiants, HttpStatus.OK);
+    }
     @PostMapping("/add")
     public ResponseEntity<Etudiant> addEtudiants(@RequestBody Etudiant etudiant){
         Etudiant newEtudiant = etudiantService.addEtudiant(etudiant);

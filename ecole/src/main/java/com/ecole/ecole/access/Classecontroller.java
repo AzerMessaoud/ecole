@@ -16,6 +16,11 @@ import java.util.List;
 public class Classecontroller {
     @Autowired
     ClasseService classeService;
+    @GetMapping("/t")
+    public ResponseEntity<List<Classe>> getAllClassest() {
+        List<Classe> classes = classeService.getAllClassest();
+        return new ResponseEntity<>(classes, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<ClasseDTO>> getAllClasses() {
@@ -36,5 +41,10 @@ public class Classecontroller {
     public ResponseEntity<?>deleteClasses(@PathVariable("id") Long id) {
         classeService.deleteClass(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/without")
+    public ResponseEntity<List<ClasseDTO>> getClassesWithout() {
+        List<ClasseDTO> classes = classeService.getClassWithoutStudents();
+        return new ResponseEntity<>(classes, HttpStatus.OK);
     }
 }

@@ -5,10 +5,19 @@ import java.io.Serializable;
 public class ClasseDTO implements Serializable {
     private Long id ;
     private String lib;
-    private Long idNivaeu;
-
+    private Long idNiveau;
     public ClasseDTO() {
     }
+
+    public Long getIdNiveau() {
+        return idNiveau;
+    }
+
+    public void setIdNiveau(Long idNiveau) {
+        this.idNiveau = idNiveau;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -25,12 +34,6 @@ public class ClasseDTO implements Serializable {
     public void setLib(String lib) {
         this.lib = lib;
     }
-
-    public Long getIdNivaeu() {
-        return idNivaeu;
-    }
-
-    public void setIdNivaeu(Long idNivaeu) {
-        this.idNivaeu = idNivaeu;
-    }
 }
+
+

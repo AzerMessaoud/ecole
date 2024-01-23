@@ -1,15 +1,17 @@
 package com.ecole.ecole.access;
 
+import com.ecole.ecole.DTOs.NiveauDTO;
 import com.ecole.ecole.Models.Classe;
 import com.ecole.ecole.Models.Niveau;
 import com.ecole.ecole.Service.NiveauService;
+import com.ecole.ecole.dao.RetourQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
-@RequestMapping("/niveu")
+@RequestMapping("/nivaeu")
 public class NivaeuController {
     @Autowired
     NiveauService niveauService;
@@ -19,6 +21,15 @@ public class NivaeuController {
         List<Niveau> niveau = niveauService.getAllNiveau();
         return new ResponseEntity<>(niveau, HttpStatus.OK);
     }
+
+    @GetMapping("/maxclasses")
+    public ResponseEntity<List<RetourQuery>> getNiveauWithMaxClasses() {
+        ;
+        return new ResponseEntity<>(niveauService.getNiveauWithMaxClasses(), HttpStatus.OK);
+    }
+
+
+
     @PostMapping("/add")
     public ResponseEntity<Niveau> addClasses(@RequestBody Niveau niveau){
         Niveau newNiveau = niveauService.addNiveau(niveau);

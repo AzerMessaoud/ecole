@@ -20,7 +20,7 @@ public class ClasseService {
     Mapper modelMapper;
 
     public ClasseService() {}
-  //  public List<Classe> getAllClasses(){return classRepo.findAll();}
+    public List<Classe> getAllClassest(){return classRepo.findAll();}
     public Classe addClass(Classe classe){
         return classRepo.save(classe);
     }
@@ -36,4 +36,14 @@ public class ClasseService {
                 .collect(Collectors.toList());
         return classeDTOList;
     }
+
+    public List<ClasseDTO> getClassWithoutStudents(){
+        List<ClasseDTO> classeDTOList = classRepo.findClassesWithoutStudents().stream()
+                .map(classe -> modelMapper.map(classe, ClasseDTO.class))
+                .collect(Collectors.toList());
+        return classeDTOList;
+    }
+
+
+
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Niveau implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idniveau",nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false)
     private Long id;
     @Column(name="niveau_lib")
     private String niveauLib;

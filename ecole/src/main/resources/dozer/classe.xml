@@ -3,7 +3,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://dozer.sourceforge.net
       http://dozer.sourceforge.net/schema/beanmapping.xsd">
-    <mapping wildcard="false">
+    <mapping wildcard="true">
         <class-a>com.ecole.ecole.Models.Classe</class-a>
         <class-b>com.ecole.ecole.DTOs.ClasseDTO</class-b>
         <field>

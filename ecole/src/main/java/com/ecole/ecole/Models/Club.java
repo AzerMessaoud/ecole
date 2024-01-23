@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Club implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idclub",nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false)
     private Long id;
     @Column(name = "clublib")
     private String clubLib;

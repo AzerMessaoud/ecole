@@ -28,6 +28,24 @@ public class EtudiantService {
             .collect(Collectors.toList());
         return etudiantDTOList;
     }
+    public List<EtudiantDTO> getAllByNiveau(String NiveauLib){
+        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByNiveau(NiveauLib).stream()
+                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+                .collect(Collectors.toList());
+        return etudiantDTOList;
+    }
+    public List<EtudiantDTO> getStudentsWithoutClassesDQ(){
+        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByClasseIsNull().stream()
+                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+                .collect(Collectors.toList());
+        return etudiantDTOList;
+    }
+    public List<EtudiantDTO> getStudentsWithoutClasses(){
+        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findStudentsWithoutClasses().stream()
+                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+                .collect(Collectors.toList());
+        return etudiantDTOList;
+    }
     public Etudiant addEtudiant(Etudiant etudiant){
         return etudiantRepo.save(etudiant);
     }
@@ -46,10 +64,7 @@ public class EtudiantService {
 
          */
     }
-    public List<EtudiantDTO> getAllByNiveau(String NiveauLib){
-        List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByNiveau(NiveauLib).stream()
-                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
-                .collect(Collectors.toList());
-        return etudiantDTOList;
-    }
+
+
+
 }
