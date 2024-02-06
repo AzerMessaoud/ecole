@@ -15,7 +15,7 @@ import java.util.List;
 public class NivaeuController {
     @Autowired
     NiveauService niveauService;
-
+//f_branch_comment
     @GetMapping
     public ResponseEntity<List<Niveau>> getAllNiveau() {
         List<Niveau> niveau = niveauService.getAllNiveau();
@@ -40,7 +40,7 @@ public class NivaeuController {
         Niveau UpdatedNiveau= niveauService.updateNiveau(niveau);
         return new ResponseEntity<>(UpdatedNiveau, HttpStatus.OK);
     }
-    @DeleteMapping("/Delete{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?>deleteNiveaus(@PathVariable("id") Long id) {
         niveauService.deleteNiveau(id);
         return new ResponseEntity<>(HttpStatus.OK);
