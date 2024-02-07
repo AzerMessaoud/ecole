@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Classe")
@@ -51,5 +52,18 @@ public class Classe implements Serializable {
 
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Classe classe = (Classe) o;
+        return rate == classe.rate && Objects.equals(id, classe.id) && Objects.equals(lib, classe.lib) && Objects.equals(niveau, classe.niveau);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, lib, rate, niveau);
     }
 }
