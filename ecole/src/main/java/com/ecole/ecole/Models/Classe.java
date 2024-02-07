@@ -66,5 +66,16 @@ public class Classe implements Serializable {
     public int hashCode() {
         return Objects.hash(id, lib, rate, niveau);
     }
-    //first commit 
+    //first commit
+
+
+    @Override
+    public String toString() {
+        return "Classe{" +
+                "id=" + id +
+                ", lib='" + lib + '\'' +
+                ", rate=" + rate +
+                ", niveau=" + niveau +
+                '}';
+    }
 }
