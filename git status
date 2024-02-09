@@ -1,0 +1,65 @@
+[33mcommit eaff0c426b1c87916008ec29c61dd3d99b0e43b5[m[33m ([m[1;36mHEAD -> [m[1;32mx_f_b[m[33m)[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Wed Feb 7 10:26:04 2024 +0100
+
+    added_rate_field_to_classe
+
+[33mcommit 149431f5f4ea9796603ab69faa1cf4a4338cf764[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Wed Feb 7 10:23:49 2024 +0100
+
+    comment_commit
+
+[33mcommit 77d321b908a3f1c71e653c56e61b4e9c15fb98a4[m[33m ([m[1;31morigin/x_f_b[m[33m)[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Tue Feb 6 10:22:57 2024 +0100
+
+    branch first commit
+
+[33mcommit 12366b3b2c935bd9355e9845c386976822c77d80[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Tue Jan 23 10:02:53 2024 +0100
+
+    jpql commit
+
+[33mcommit aab7cba11bf03d74a5ba114889157b118edbea17[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Sat Jan 20 09:12:41 2024 +0100
+
+    ClasseDTO problem
+
+[33mcommit d3d8bd4ecc3e81ba2b88ef13eae8826cdc195323[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Thu Jan 18 11:22:05 2024 +0100
+
+    DTOs commit
+
+[33mcommit b0ea4781416c5408cd3b5170f0b68ead456cc721[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Tue Jan 16 11:03:25 2024 +0100
+
+    first DTO commit
+
+[33mcommit af6d7cb65f5e56572a7bdbc6d531e0649aa10c61[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Fri Jan 12 13:02:01 2024 +0100
+
+    manytomany commit
+
+[33mcommit fc48d548ac08089f1f6770fc514a218aa81d5730[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Thu Jan 11 14:04:13 2024 +0100
+
+    2nd commit
+
+[33mcommit 8986744711d7e5d471652d9fed8c18f6edb713f1[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Thu Jan 11 14:03:52 2024 +0100
+
+    first commit
+
+[33mcommit 12a8ffd9403601089dab449c0d65e4908ed08c5e[m
+Author: azerm <messaoud.azer.1@gmail.com>
+Date:   Thu Jan 11 10:57:59 2024 +0100
+
+    first commit
