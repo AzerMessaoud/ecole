@@ -14,6 +14,15 @@ public class Classe implements Serializable {
     private Long id;
     @Column
     private String lib;
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
     private int rate;
     @ManyToOne(targetEntity = Niveau.class)
     @JoinColumn(name = "id_niveau")
