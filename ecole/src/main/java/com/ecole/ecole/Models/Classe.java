@@ -15,16 +15,12 @@ public class Classe implements Serializable {
     private Long id;
     @Column
     private String lib;
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
-
     private int rate;
+
+
+
+
+
     @ManyToOne(targetEntity = Niveau.class)
     @JoinColumn(name = "id_niveau")
     private Niveau niveau;
@@ -62,13 +58,23 @@ public class Classe implements Serializable {
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Classe classe = (Classe) o;
-        return rate == classe.rate && Objects.equals(id, classe.id) && Objects.equals(lib, classe.lib) && Objects.equals(niveau, classe.niveau);
+        return rate == classe.rate
+                && Objects.equals(id, classe.id)
+                && Objects.equals(lib, classe.lib)
+                && Objects.equals(niveau, classe.niveau);
     }
 
     @Override
