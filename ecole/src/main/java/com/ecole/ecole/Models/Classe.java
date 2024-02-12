@@ -75,7 +75,7 @@ public class Classe implements Serializable {
     public int hashCode() {
         return Objects.hash(id, lib, rate, niveau);
     }
-    //first commit
+    //feat_03
 
 
     @Override
@@ -88,3 +88,4 @@ public class Classe implements Serializable {
                 '}';
     }
 }
+//fvdfvb 
