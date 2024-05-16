@@ -2,6 +2,7 @@ package com.ecole.ecole.Service;
 
 import com.ecole.ecole.DTOs.ClasseDTO;
 import com.ecole.ecole.DTOs.NiveauDTO;
+import com.ecole.ecole.Models.Classe;
 import com.ecole.ecole.Models.Niveau;
 import com.ecole.ecole.dao.NiveauRepo;
 import com.ecole.ecole.dao.RetourQuery;
@@ -9,6 +10,7 @@ import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
@@ -22,33 +24,48 @@ public class NiveauService {
     @Autowired
     Mapper modelMapper;
 
-    public NiveauService() {}
+    public NiveauService() {
+    }
 
     public List<RetourQuery> getNiveauWithMaxClasses() {
-        return     niveauRepo.findNiveauWithMaxClasses();
+        return niveauRepo.findNiveauWithMaxClasses();
 
 
     }
-    public List<Niveau> getAllNiveau(){return niveauRepo.findAll();}
-    @Transactional(dontRollbackOn = RuntimeException.class)
-    public Niveau addNiveau(Niveau niveau){
-       var newNiveau = niveauRepo.save(niveau);
 
-       var duplicatedNewNiveau = new Niveau(newNiveau.getId(), newNiveau.getNiveauLib());
-        duplicatedNewNiveau.setNiveauLib("hello");
-        System.out.println("----------------------1");
-//        niveau.setNiveauLib("hello");
-        if(newNiveau.getId() >1){
-        throw new RuntimeException();}
+    public List<Niveau> getAllNiveau() {
+        return niveauRepo.findAll();
+    }
+    public Niveau getNiveauById(Long id) {
+        return niveauRepo.getNiveauById(id);
+    }
+
+
+    @Transactional(dontRollbackOn = RuntimeException.class)
+    public Niveau addNiveau(Niveau niveau) {
+        var newNiveau = niveauRepo.save(niveau);
+
+//        var duplicatedNewNiveau = new Niveau(newNiveau.getId(), newNiveau.getNiveauLib());
+//        duplicatedNewNiveau.setNiveauLib("hello");
+//        System.out.println("----------------------1");
+////        niveau.setNiveauLib("hello");
+//        if (newNiveau.getId() > 1) {
+//            throw new RuntimeException();
+//        }
         return newNiveau;
 
     }
-    public Niveau updateNiveau(Niveau niveau){
+
+    public Niveau updateNiveau(Niveau niveau) {
+        if (niveauRepo.findById(niveau.getId()).isEmpty()) {
+            throw new IllegalArgumentException("niveau not found");
+        }
         return niveauRepo.save(niveau);
     }
+
     @Transactional
     @Modifying
-    public void deleteNiveau(Long id){
+    public void deleteNiveau(Long id) {
         niveauRepo.deleteNiveauById(id);
     }
 

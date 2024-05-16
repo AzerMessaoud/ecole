@@ -4,6 +4,7 @@ import com.ecole.ecole.Models.Etudiant;
 import com.ecole.ecole.DTOs.EtudiantDTO;
 import com.ecole.ecole.dao.ClubRepo;
 import com.ecole.ecole.dao.EtudiantRepo;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,50 +22,63 @@ public class EtudiantService {
     Mapper modelMapper;
 
 
-    public EtudiantService() {}
-    public List<EtudiantDTO> getAllEtudiant(){
+    public EtudiantService() {
+    }
+
+    public List<EtudiantDTO> getAllEtudiant() {
         List<EtudiantDTO> etudiantDTOList = etudiantRepo.findAll().stream()
-            .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
-            .collect(Collectors.toList());
+                .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
+                .collect(Collectors.toList());
         return etudiantDTOList;
     }
-    public List<EtudiantDTO> getAllByNiveau(String NiveauLib){
+
+    public List<EtudiantDTO> getAllByNiveau(String NiveauLib) {
         List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByNiveau(NiveauLib).stream()
                 .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
                 .collect(Collectors.toList());
         return etudiantDTOList;
     }
-    public List<EtudiantDTO> getStudentsWithoutClassesDQ(){
+
+    public List<EtudiantDTO> getStudentsWithoutClassesDQ() {
         List<EtudiantDTO> etudiantDTOList = etudiantRepo.findByClasseIsNull().stream()
                 .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
                 .collect(Collectors.toList());
         return etudiantDTOList;
     }
-    public List<EtudiantDTO> getStudentsWithoutClasses(){
+
+    public List<EtudiantDTO> getStudentsWithoutClasses() {
         List<EtudiantDTO> etudiantDTOList = etudiantRepo.findStudentsWithoutClasses().stream()
                 .map(etudiant -> modelMapper.map(etudiant, EtudiantDTO.class))
                 .collect(Collectors.toList());
         return etudiantDTOList;
     }
-    public Etudiant addEtudiant(Etudiant etudiant){
+
+    public Etudiant addEtudiant(Etudiant etudiant) {
         return etudiantRepo.save(etudiant);
     }
-    public Etudiant updateEtudiant(Etudiant etudiant){
+
+    public Etudiant updateEtudiant(Etudiant etudiant) {
+        if (etudiant == null || etudiant.getId() == null) {
+            throw new RuntimeException("etudiant id is not found11");
+        }
+        if (etudiantRepo.findById(etudiant.getId()).isEmpty()) {
+            throw new IllegalArgumentException("etudiant is not found");
+        }
         return etudiantRepo.save(etudiant);
+//
+//        return etudiantRepo.findById(etudiant.getId()).map(val -> etudiantRepo.save(val)).orElseThrow(() ->
+//                new IllegalArgumentException("etudiant is not found"));
+
+
     }
-    public void deleteEtudiant(Long id){etudiantRepo.deleteEtudiantById(id);}
+
+    public void deleteEtudiant(Long id) {
+        etudiantRepo.deleteEtudiantById(id);
+    }
+
     public void affectationEtudiantClub(Long idEtudiant, Long idClub) {
-        /*
-        Optional<Etudiant> studentOptional = etudiantRepo.findById(idEtudiant);
-        Optional<Club> courseOptional = clubRepo.findById(idClub);
-        Etudiant etudiant = studentOptional.orElse(null);
-        Club club = courseOptional.get();
-        etudiant.getClubsAffecter().add(club);
-        etudiantRepo.save(etudiant);
 
-         */
     }
-
 
 
 }

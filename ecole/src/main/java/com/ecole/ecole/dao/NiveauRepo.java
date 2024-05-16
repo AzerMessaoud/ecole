@@ -1,8 +1,6 @@
 package com.ecole.ecole.dao;
 
-import com.ecole.ecole.Models.Classe;
 import com.ecole.ecole.Models.Niveau;
-import jakarta.persistence.Tuple;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,6 +10,8 @@ import java.util.List;
 @Repository
 public interface NiveauRepo extends JpaRepository<Niveau,Long> {
     void deleteNiveauById(Long id);
+    Niveau getNiveauById(Long id);
+
 /*
     @Query("SELECT COUNT(n.id) as nb, n.niveauLib FROM Niveau n" +
             "JOIN Classe c" +
