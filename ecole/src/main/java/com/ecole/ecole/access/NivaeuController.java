@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
+@CrossOrigin
 @RequestMapping("/nivaeu")
 public class NivaeuController {
     @Autowired
@@ -19,28 +20,37 @@ public class NivaeuController {
     // other comm
     @GetMapping
     public ResponseEntity<List<Niveau>> getAllNiveau() {
+        System.out.println("-------------");
         List<Niveau> niveau = niveauService.getAllNiveau();
         return new ResponseEntity<>(niveau, HttpStatus.OK);
     }
 
     @GetMapping("/maxclasses")
     public ResponseEntity<List<RetourQuery>> getNiveauWithMaxClasses() {
-        ;
+
         return new ResponseEntity<>(niveauService.getNiveauWithMaxClasses(), HttpStatus.OK);
+    }
+    @GetMapping("/niveaubyid/{id}")
+    public ResponseEntity<Niveau>getNiveauById(@PathVariable("id") Long id) {
+        Niveau niveau = niveauService.getNiveauById(id);
+        return new ResponseEntity<>(niveau, HttpStatus.OK);
     }
 
 
 
     @PostMapping("/add")
-    public ResponseEntity<Niveau> addClasses(@RequestBody Niveau niveau){
+    public ResponseEntity<Niveau> addNiveaus(@RequestBody Niveau niveau){
         Niveau newNiveau = niveauService.addNiveau(niveau);
         return new ResponseEntity<>(newNiveau, HttpStatus.CREATED);
     }
-    @PostMapping("/Update")
+
+    @PostMapping("/update")
     public ResponseEntity<Niveau> updateNiveau(@RequestBody Niveau niveau){
         Niveau UpdatedNiveau= niveauService.updateNiveau(niveau);
+        System.out.println("update");
         return new ResponseEntity<>(UpdatedNiveau, HttpStatus.OK);
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?>deleteNiveaus(@PathVariable("id") Long id) {
         niveauService.deleteNiveau(id);
